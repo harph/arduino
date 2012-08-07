@@ -19,6 +19,7 @@ void loop() {
   // Sends the value of the button to the LED pin
   if ((val == HIGH) && (old_val == LOW)) {
     state = 1 - state;
+    delay(10); // Simple way to do de-bouncing
   }
   
   // We need this to keep the previous value
