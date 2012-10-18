@@ -3,28 +3,34 @@
 
 const int LED = 13; // The pin for the LED
 const int BUTTON = 7; // pin for the pushbutton
-int state = false;
+int state = LOW;
 int val = 0;
-int old_val = 0;
+int old_val = LOW;
 int i = 0; // Count up and down
 
 void setup() {
   pinMode(LED, OUTPUT); // Setting this pin as output
+  pinMode(BUTTON, INPUT); // Setting this pin as input
 }
 
 void loop() {
   val = digitalRead(BUTTON);
-  if (val && (old_val == 0)) {
-    state = 1 - state;
-    delay(10);
+
+  if (val && !old_val) {
+    if (state) {
+      for (int i = max_high; i < = 0; i++) {
+        digitalWrite(LED, state);
+      }
+      state = LOW;
+    } else {
+      state = HIGH;
+    }
   }
+  
   old_val = val;
-  if (state == 1) {
-    digitalWrite(LED, HIGH);
-  }
-  else {
-    digitalWrite(LED, LOW);
-  }
+
+  
+  delay(10);
 }
 
 
