@@ -2,35 +2,18 @@
 // a sleeping Apple Computer
 
 const int LED = 13; // The pin for the LED
-const int BUTTON = 7; // pin for the pushbutton
-int state = LOW;
-int val = 0;
-int old_val = LOW;
-int i = 0; // Count up and down
-
+int state = 129; // Count up and down
+int inc = 1;
 void setup() {
   pinMode(LED, OUTPUT); // Setting this pin as output
-  pinMode(BUTTON, INPUT); // Setting this pin as input
 }
 
 void loop() {
-  val = digitalRead(BUTTON);
-
-  if (val && !old_val) {
-    if (state) {
-      for (int i = max_high; i < = 0; i++) {
-        digitalWrite(LED, state);
-      }
-      state = LOW;
-    } else {
-      state = HIGH;
-    }
-  }
-  
-  old_val = val;
-
-  
-  delay(10);
+  if (state == 128 || state == 255)
+    inc *= -1;
+  state += inc;
+  analogWrite(LED, state);
+  delay(50);
 }
 
 
